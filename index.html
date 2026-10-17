@@ -16,35 +16,24 @@
           fontFamily: {
             sans: ['Plus Jakarta Sans', 'sans-serif'],
             display: ['Space Grotesk', 'sans-serif'],
-          },
-          colors: {
-            brand: {
-              50: '#f0f3ff',
-              500: '#6366f1',
-              600: '#4f46e5',
-              700: '#4338ca',
-            }
           }
         }
       }
     }
   </script>
   <style>
-    /* CSS Tùy chỉnh hiệu ứng & Giao diện */
     body {
       background: radial-gradient(circle at top left, #0f172a, #1e1b4b, #020617);
       min-height: 100vh;
       color: #f8fafc;
       user-select: none;
     }
-    /* Hiệu ứng kính mờ (Glassmorphism) */
     .glass-card {
       background: rgba(30, 41, 59, 0.7);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
-    /* Theme tùy chọn từ Tủ đồ */
     body.theme-emerald {
       background: radial-gradient(circle at top left, #022c22, #064e3b, #020617);
     }
@@ -54,15 +43,14 @@
     body.theme-amber {
       background: radial-gradient(circle at top left, #451a03, #78350f, #020617);
     }
-    /* Animation khi chọn đúng / sai */
     @keyframes pulse-success {
       0% { transform: scale(1); border-color: rgba(34, 197, 94, 0.5); }
-      50% { transform: scale(1.03); border-color: rgba(34, 197, 94, 1); box-shadow: 0 0 25px rgba(34, 197, 94, 0.4); }
+      50% { transform: scale(1.02); border-color: rgba(34, 197, 94, 1); box-shadow: 0 0 25px rgba(34, 197, 94, 0.4); }
       100% { transform: scale(1); border-color: rgba(255, 255, 255, 0.1); }
     }
     @keyframes pulse-error {
       0% { transform: scale(1); border-color: rgba(239, 68, 68, 0.5); }
-      50% { transform: scale(0.97); border-color: rgba(239, 68, 68, 1); box-shadow: 0 0 25px rgba(239, 68, 68, 0.4); }
+      50% { transform: scale(0.98); border-color: rgba(239, 68, 68, 1); box-shadow: 0 0 25px rgba(239, 68, 68, 0.4); }
       100% { transform: scale(1); border-color: rgba(255, 255, 255, 0.1); }
     }
     .animate-correct { animation: pulse-success 0.35s ease-out; }
@@ -71,7 +59,7 @@
 </head>
 <body class="font-sans antialiased flex flex-col justify-between p-4 md:p-6 transition-colors duration-500">
 
-  <!-- HEADER NỔI -->
+  <!-- HEADER -->
   <header class="max-w-4xl mx-auto w-full flex justify-between items-center mb-6 glass-card rounded-2xl p-4 shadow-xl">
     <div class="flex items-center gap-3 cursor-pointer" onclick="showScreen('screen-home')">
       <div class="w-10 h-10 bg-gradient-to-tr from-indigo-500 to-cyan-400 rounded-xl flex items-center justify-center font-display text-xl font-black text-white shadow-lg">
@@ -84,21 +72,19 @@
     </div>
     
     <div class="flex items-center gap-3">
-      <!-- Nút Âm Thanh -->
       <button id="btn-sound" onclick="toggleSound()" class="px-3 py-2 glass-card hover:bg-slate-700/50 rounded-xl text-sm font-semibold flex items-center gap-2 transition">
         <span id="sound-icon">🔊</span>
       </button>
-      <!-- Điểm Tích Lũy / Coins -->
       <div class="px-4 py-2 glass-card bg-amber-500/10 border-amber-500/30 rounded-xl text-amber-400 font-bold text-sm flex items-center gap-2">
         🏆 <span id="player-coins">0</span> pts
       </div>
     </div>
   </header>
 
-  <!-- KHU VỰC CÁC MÀN HÌNH (SCREENS) -->
+  <!-- KHU VỰC CÁC MÀN HÌNH -->
   <main class="max-w-4xl mx-auto w-full flex-1 flex flex-col justify-center">
 
-    <!-- 1. MÀN HÌNH TRANG CHỦ (HOME) -->
+    <!-- 1. MÀN HÌNH TRANG CHỦ -->
     <section id="screen-home" class="space-y-6 text-center">
       <div class="space-y-2">
         <h2 class="text-4xl sm:text-6xl font-black font-display tracking-tight bg-gradient-to-r from-indigo-400 via-cyan-300 to-white bg-clip-text text-transparent">
@@ -109,7 +95,6 @@
         </p>
       </div>
 
-      <!-- Thống kê nhanh -->
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto">
         <div class="glass-card p-3 rounded-2xl">
           <p class="text-xs text-slate-400 font-medium">Điểm Cao Nhất</p>
@@ -129,7 +114,6 @@
         </div>
       </div>
 
-      <!-- Điều Hướng Chính -->
       <div class="flex flex-col sm:flex-row justify-center items-center gap-4 pt-2">
         <button onclick="showScreen('screen-modes')" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-indigo-500 to-cyan-500 hover:from-indigo-600 hover:to-cyan-600 font-bold text-lg rounded-2xl shadow-lg shadow-indigo-500/25 transition transform active:scale-95 flex items-center justify-center gap-3">
           🚀 CHƠI NGAY
@@ -145,7 +129,7 @@
       </div>
     </section>
 
-    <!-- 2. MÀN HÌNH CHỌN CHẾ ĐỘ (MODE SELECTION) -->
+    <!-- 2. MÀN HÌNH CHỌN CHẾ ĐỘ -->
     <section id="screen-modes" class="hidden space-y-6">
       <div class="flex items-center gap-4">
         <button onclick="showScreen('screen-home')" class="p-2 glass-card rounded-xl hover:bg-slate-700/50 transition">👈 Quay lại</button>
@@ -153,7 +137,6 @@
       </div>
 
       <div class="grid md:grid-cols-3 gap-4">
-        <!-- Mode 1 -->
         <div onclick="startGame('fill')" class="glass-card p-6 rounded-3xl hover:border-indigo-500/50 cursor-pointer transition transform hover:-translate-y-1 group">
           <div class="w-12 h-12 bg-indigo-500/20 text-indigo-400 rounded-2xl flex items-center justify-center text-2xl font-bold mb-4 group-hover:scale-110 transition">✍️</div>
           <h3 class="text-xl font-bold mb-2">1. Điền Số</h3>
@@ -161,7 +144,6 @@
           <div class="text-xs text-indigo-400 font-semibold">Kỷ lục: <span id="mode-high-fill">0</span> điểm</div>
         </div>
 
-        <!-- Mode 2 -->
         <div onclick="startGame('multipleChoice')" class="glass-card p-6 rounded-3xl hover:border-cyan-500/50 cursor-pointer transition transform hover:-translate-y-1 group">
           <div class="w-12 h-12 bg-cyan-500/20 text-cyan-400 rounded-2xl flex items-center justify-center text-2xl font-bold mb-4 group-hover:scale-110 transition">🎯</div>
           <h3 class="text-xl font-bold mb-2">2. Chọn Đáp Án</h3>
@@ -169,7 +151,6 @@
           <div class="text-xs text-cyan-400 font-semibold">Kỷ lục: <span id="mode-high-mc">0</span> điểm</div>
         </div>
 
-        <!-- Mode 3 -->
         <div onclick="startGame('trueFalse')" class="glass-card p-6 rounded-3xl hover:border-emerald-500/50 cursor-pointer transition transform hover:-translate-y-1 group">
           <div class="w-12 h-12 bg-emerald-500/20 text-emerald-400 rounded-2xl flex items-center justify-center text-2xl font-bold mb-4 group-hover:scale-110 transition">⚡</div>
           <h3 class="text-xl font-bold mb-2">3. Đúng hay Sai</h3>
@@ -179,54 +160,52 @@
       </div>
     </section>
 
-    <!-- 3. MÀN HÌNH CHƠI GAME (GAME SCREEN) -->
+    <!-- 3. MÀN HÌNH CHƠI GAME -->
     <section id="screen-game" class="hidden space-y-6">
-      <!-- Thanh Đếm Ngược & Thông Tin Game -->
       <div class="glass-card p-4 rounded-2xl space-y-3">
         <div class="flex justify-between items-center text-sm font-semibold">
           <span class="text-slate-400">Câu <span id="game-q-index" class="text-white">1</span>/20</span>
           <span id="game-combo-badge" class="hidden px-3 py-1 bg-amber-500/20 text-amber-300 border border-amber-500/40 rounded-full text-xs font-bold animate-pulse">🔥 COMBO x<span id="game-combo-count">0</span></span>
           <span class="text-slate-400">Điểm: <span id="game-current-score" class="text-indigo-400 font-bold text-lg">0</span></span>
         </div>
-        <!-- Progress Bar Thời Gian -->
         <div class="w-full h-3 bg-slate-800 rounded-full overflow-hidden p-0.5">
           <div id="game-timer-bar" class="h-full bg-gradient-to-r from-emerald-400 to-indigo-500 rounded-full transition-all duration-100 ease-linear"></div>
         </div>
       </div>
 
-      <!-- Thẻ Phép Tính (Question Card) -->
-      <div id="game-card" class="glass-card p-8 sm:p-12 rounded-3xl text-center space-y-6 relative overflow-hidden transition-all duration-300">
-        <!-- Visual Feedback Indicator -->
-        <div id="feedback-pop" class="absolute inset-0 flex items-center justify-center font-black text-6xl opacity-0 pointer-events-none transition-opacity duration-300"></div>
+      <!-- Thẻ Phép Tính -->
+      <div id="game-card" class="glass-card p-8 sm:p-12 rounded-3xl text-center space-y-6 relative transition-all duration-300">
+        <!-- Thông Báo Phản Hồi Nhỏ Gọn (Toast) - Không bị đè chữ lên phép tính -->
+        <div id="feedback-toast" class="hidden absolute top-3 right-4 px-4 py-1.5 rounded-full font-bold text-sm shadow-lg pointer-events-none transition-all duration-200"></div>
 
         <p class="text-xs uppercase tracking-widest text-indigo-400 font-semibold">Tính Nhẩm Bứt Phá</p>
         <h3 id="game-question-text" class="text-4xl sm:text-6xl font-black font-display tracking-wide text-white">
           37 + 48 = ?
         </h3>
 
-        <!-- Khu Vực Trả Lời Cho MODE 1 (Điền Số) -->
+        <!-- Mode 1: Điền Số -->
         <div id="area-fill" class="hidden max-w-xs mx-auto space-y-4">
           <input type="number" id="input-fill-answer" placeholder="Nhập số..." class="w-full text-center text-2xl font-bold bg-slate-900/80 border border-slate-700 focus:border-indigo-500 focus:outline-none rounded-2xl py-3 text-white transition">
-          <button onclick="submitFillAnswer()" class="w-full py-3 bg-indigo-600 hover:bg-indigo-500 font-bold rounded-xl transition shadow-lg">Xác Nhận (Enter)</button>
+          <button id="btn-submit-fill" onclick="submitFillAnswer()" class="w-full py-3 bg-indigo-600 hover:bg-indigo-500 font-bold rounded-xl transition shadow-lg">Xác Nhận (Enter)</button>
         </div>
 
-        <!-- Khu Vực Trả Lời Cho MODE 2 (Chọn Đáp Án) -->
+        <!-- Mode 2: Chọn Đáp Án -->
         <div id="area-mc" class="hidden grid grid-cols-2 gap-3 max-w-md mx-auto">
-          <button onclick="submitMCAnswer(0)" id="mc-btn-0" class="py-4 glass-card hover:bg-indigo-600/40 text-xl font-bold rounded-2xl border border-slate-700 transition">A</button>
-          <button onclick="submitMCAnswer(1)" id="mc-btn-1" class="py-4 glass-card hover:bg-indigo-600/40 text-xl font-bold rounded-2xl border border-slate-700 transition">B</button>
-          <button onclick="submitMCAnswer(2)" id="mc-btn-2" class="py-4 glass-card hover:bg-indigo-600/40 text-xl font-bold rounded-2xl border border-slate-700 transition">C</button>
-          <button onclick="submitMCAnswer(3)" id="mc-btn-3" class="py-4 glass-card hover:bg-indigo-600/40 text-xl font-bold rounded-2xl border border-slate-700 transition">D</button>
+          <button onclick="submitMCAnswer(0)" id="mc-btn-0" class="mc-btn py-4 glass-card hover:bg-indigo-600/40 text-xl font-bold rounded-2xl border border-slate-700 transition">A</button>
+          <button onclick="submitMCAnswer(1)" id="mc-btn-1" class="mc-btn py-4 glass-card hover:bg-indigo-600/40 text-xl font-bold rounded-2xl border border-slate-700 transition">B</button>
+          <button onclick="submitMCAnswer(2)" id="mc-btn-2" class="mc-btn py-4 glass-card hover:bg-indigo-600/40 text-xl font-bold rounded-2xl border border-slate-700 transition">C</button>
+          <button onclick="submitMCAnswer(3)" id="mc-btn-3" class="mc-btn py-4 glass-card hover:bg-indigo-600/40 text-xl font-bold rounded-2xl border border-slate-700 transition">D</button>
         </div>
 
-        <!-- Khu Vực Trả Lời Cho MODE 3 (Đúng / Sai) -->
+        <!-- Mode 3: Đúng hay Sai -->
         <div id="area-tf" class="hidden flex justify-center gap-4 max-w-sm mx-auto">
-          <button onclick="submitTFAnswer(true)" class="flex-1 py-4 bg-emerald-600/80 hover:bg-emerald-500 font-bold text-lg rounded-2xl transition border border-emerald-400/30 shadow-lg">✔ ĐÚNG</button>
-          <button onclick="submitTFAnswer(false)" class="flex-1 py-4 bg-rose-600/80 hover:bg-rose-500 font-bold text-lg rounded-2xl transition border border-rose-400/30 shadow-lg">✖ SAI</button>
+          <button id="tf-btn-true" onclick="submitTFAnswer(true)" class="tf-btn flex-1 py-4 bg-emerald-600/80 hover:bg-emerald-500 font-bold text-lg rounded-2xl transition border border-emerald-400/30 shadow-lg">✔ ĐÚNG</button>
+          <button id="tf-btn-false" onclick="submitTFAnswer(false)" class="tf-btn flex-1 py-4 bg-rose-600/80 hover:bg-rose-500 font-bold text-lg rounded-2xl transition border border-rose-400/30 shadow-lg">✖ SAI</button>
         </div>
       </div>
     </section>
 
-    <!-- 4. MÀN HÌNH KẾT QUẢ (RESULT SCREEN) -->
+    <!-- 4. MÀN HÌNH KẾT QUẢ -->
     <section id="screen-result" class="hidden space-y-6 text-center">
       <div id="new-high-banner" class="hidden px-4 py-2 bg-gradient-to-r from-amber-500 to-rose-500 text-white font-black text-sm uppercase tracking-widest rounded-full w-max mx-auto shadow-lg animate-bounce">
         🎉 NEW HIGH SCORE! PHÁ KỶ LỤC!
@@ -237,7 +216,6 @@
         <p class="text-slate-400 text-sm">Cùng nhìn lại thành tích phản xạ của bạn</p>
       </div>
 
-      <!-- Bảng Tổng Kết -->
       <div class="glass-card p-6 rounded-3xl max-w-md mx-auto space-y-4">
         <div class="text-center">
           <p class="text-xs text-slate-400 uppercase font-semibold">Tổng Điểm Đạt Được</p>
@@ -254,26 +232,23 @@
         </div>
       </div>
 
-      <!-- Điều Hướng -->
       <div class="flex justify-center gap-4">
         <button onclick="startGame(state.currentMode)" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-500 font-bold rounded-2xl transition">🔄 Chơi Lại Mode Này</button>
         <button onclick="showScreen('screen-home')" class="px-6 py-3 glass-card hover:bg-slate-700/50 font-semibold rounded-2xl transition">🏠 Trang Chủ</button>
       </div>
     </section>
 
-    <!-- 5. MÀN HÌNH TỦ ĐỒ (WARDROBE / SHOP) -->
+    <!-- 5. MÀN HÌNH TỦ ĐỒ -->
     <section id="screen-wardrobe" class="hidden space-y-6">
       <div class="flex items-center gap-4">
         <button onclick="showScreen('screen-home')" class="p-2 glass-card rounded-xl hover:bg-slate-700/50 transition">👈 Trang chủ</button>
         <h2 class="text-2xl font-bold font-display">Tủ Đồ & Cửa Hàng</h2>
       </div>
 
-      <div class="grid sm:grid-cols-2 gap-4" id="wardrobe-items-container">
-        <!-- Render tự động qua JS -->
-      </div>
+      <div class="grid sm:grid-cols-2 gap-4" id="wardrobe-items-container"></div>
     </section>
 
-    <!-- 6. MÀN HÌNH THÀNH TÍCH & CHỨNG NHẬN (ACHIEVEMENTS) -->
+    <!-- 6. MÀN HÌNH THÀNH TÍCH -->
     <section id="screen-achievements" class="hidden space-y-6">
       <div class="flex justify-between items-center">
         <div class="flex items-center gap-4">
@@ -285,14 +260,12 @@
         </button>
       </div>
 
-      <div class="grid sm:grid-cols-2 gap-4" id="achievements-container">
-        <!-- Render tự động qua JS -->
-      </div>
+      <div class="grid sm:grid-cols-2 gap-4" id="achievements-container"></div>
     </section>
 
   </main>
 
-  <!-- MODAL CHỨNG NHẬN (CERTIFICATE POPUP) -->
+  <!-- MODAL CHỨNG NHẬN -->
   <div id="modal-cert" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden z-50 flex items-center justify-center p-4">
     <div class="glass-card max-w-lg w-full p-8 rounded-3xl border-2 border-amber-500/40 text-center space-y-6 relative">
       <button onclick="closeCertificateModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white font-bold text-xl">✕</button>
@@ -315,22 +288,15 @@
     </div>
   </div>
 
-  <!-- JAVASCRIPT LOGIC DỰ ÁN (MODULE HOÀN CHỈNH) -->
   <script>
-    /* ==========================================================================
-       1. CẤU HÌNH & HẰNG SỐ (CONFIGURATION)
-       ========================================================================== */
     const CONFIG = {
       POINT_CORRECT: 2,
       POINT_WRONG: -1,
       POINT_TIMEOUT: -1,
       QUESTIONS_PER_GAME: 20,
-      TIME_PER_QUESTION: 7 // giây
+      TIME_PER_QUESTION: 7
     };
 
-    /* ==========================================================================
-       2. QUẢN LÝ DỮ LIỆU & LOCAL STORAGE
-       ========================================================================== */
     const DEFAULT_DATA = {
       playerName: "Học Sinh THPT",
       coins: 0,
@@ -353,9 +319,6 @@
       updateUIHeaderAndStats();
     }
 
-    /* ==========================================================================
-       3. TẠO ÂM THANH SỐ (WEB AUDIO API - Không dùng file ngoài)
-       ========================================================================== */
     let soundEnabled = true;
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
@@ -371,25 +334,25 @@
       const now = audioCtx.currentTime;
 
       if (type === 'correct') {
-        osc.frequency.setValueAtTime(587.33, now); // D5
-        osc.frequency.exponentialRampToValueAtTime(880, now + 0.15); // A5
+        osc.frequency.setValueAtTime(587.33, now);
+        osc.frequency.exponentialRampToValueAtTime(880, now + 0.15);
         gain.gain.setValueAtTime(0.2, now);
         gain.gain.exponentialRampToValueAtTime(0.01, now + 0.15);
         osc.start(now);
         osc.stop(now + 0.15);
       } else if (type === 'wrong') {
         osc.type = 'sawtooth';
-        osc.frequency.setValueAtTime(220, now); // A3
-        osc.frequency.exponentialRampToValueAtTime(110, now + 0.2); // A2
+        osc.frequency.setValueAtTime(220, now);
+        osc.frequency.exponentialRampToValueAtTime(110, now + 0.2);
         gain.gain.setValueAtTime(0.2, now);
         gain.gain.exponentialRampToValueAtTime(0.01, now + 0.2);
         osc.start(now);
         osc.stop(now + 0.2);
       } else if (type === 'highscore') {
         osc.type = 'triangle';
-        osc.frequency.setValueAtTime(523.25, now); // C5
-        osc.frequency.setValueAtTime(659.25, now + 0.1); // E5
-        osc.frequency.setValueAtTime(783.99, now + 0.2); // G5
+        osc.frequency.setValueAtTime(523.25, now);
+        osc.frequency.setValueAtTime(659.25, now + 0.1);
+        osc.frequency.setValueAtTime(783.99, now + 0.2);
         gain.gain.setValueAtTime(0.25, now);
         gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
         osc.start(now);
@@ -402,16 +365,11 @@
       document.getElementById('sound-icon').textContent = soundEnabled ? '🔊' : '🔇';
     }
 
-    /* ==========================================================================
-       4. BỘ SINH CÂU HỎI NGẪU NHIÊN (QUESTION GENERATOR)
-       ========================================================================== */
     const QuestionGenerator = {
-      // Hàm hỗ trợ random số nguyên từ min đến max
       randomInt(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
       },
 
-      // Mode 1: Điền số (Đáp án luôn là số nguyên 2 chữ số: 10-99)
       generateFill() {
         let n1, n2, op, ans;
         const ops = ['+', '-', '*', '/'];
@@ -444,7 +402,6 @@
         };
       },
 
-      // Mode 2: Chọn đáp án (4 phương án xáo trộn, không trùng)
       generateMC() {
         const fillQ = this.generateFill();
         const correctVal = parseInt(fillQ.correctAnswer);
@@ -466,7 +423,6 @@
         };
       },
 
-      // Mode 3: Đúng hay Sai
       generateTF() {
         const fillQ = this.generateFill();
         const correctVal = parseInt(fillQ.correctAnswer);
@@ -486,9 +442,6 @@
       }
     };
 
-    /* ==========================================================================
-       5. LOGIC TRONG GAME (GAME ENGINE & STATE)
-       ========================================================================== */
     let state = {
       currentMode: 'fill',
       questionIndex: 0,
@@ -501,10 +454,12 @@
       timer: null,
       timeLeft: CONFIG.TIME_PER_QUESTION,
       currentQ: null,
-      startTime: 0
+      startTime: 0,
+      isAnswered: false
     };
 
     function showScreen(screenId) {
+      if (state.timer) clearInterval(state.timer);
       ['screen-home', 'screen-modes', 'screen-game', 'screen-result', 'screen-wardrobe', 'screen-achievements'].forEach(id => {
         document.getElementById(id).classList.add('hidden');
       });
@@ -530,17 +485,25 @@
       nextQuestion();
     }
 
+    function setButtonsDisabled(disabled) {
+      document.querySelectorAll('.mc-btn, .tf-btn, #btn-submit-fill, #input-fill-answer').forEach(btn => {
+        btn.disabled = disabled;
+      });
+    }
+
     function nextQuestion() {
       if (state.questionIndex >= CONFIG.QUESTIONS_PER_GAME) {
         endGame();
         return;
       }
 
+      state.isAnswered = false;
+      setButtonsDisabled(false);
+
       state.questionIndex++;
       document.getElementById('game-q-index').textContent = state.questionIndex;
       document.getElementById('game-current-score').textContent = state.score;
 
-      // Ẩn/Hiện Combo
       const comboBadge = document.getElementById('game-combo-badge');
       if (state.currentCombo >= 3) {
         comboBadge.classList.remove('hidden');
@@ -549,7 +512,6 @@
         comboBadge.classList.add('hidden');
       }
 
-      // Sinh câu hỏi theo mode
       if (state.currentMode === 'fill') {
         state.currentQ = QuestionGenerator.generateFill();
         document.getElementById('area-fill').classList.remove('hidden');
@@ -575,7 +537,6 @@
 
       document.getElementById('game-question-text').textContent = state.currentQ.questionText;
 
-      // Reset Timer
       resetTimer();
     }
 
@@ -606,6 +567,10 @@
     }
 
     function handleAnswer(isCorrect, isTimeout = false) {
+      if (state.isAnswered) return;
+      state.isAnswered = true;
+      setButtonsDisabled(true);
+
       clearInterval(state.timer);
       const card = document.getElementById('game-card');
 
@@ -615,31 +580,31 @@
         state.currentCombo++;
         if (state.currentCombo > state.maxComboInRun) state.maxComboInRun = state.currentCombo;
         playSound('correct');
-        showFeedback('+2', 'text-emerald-400');
+        showToast('+2 Đúng', 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40');
         card.classList.add('animate-correct');
       } else {
         state.score += isTimeout ? CONFIG.POINT_TIMEOUT : CONFIG.POINT_WRONG;
         if (isTimeout) state.timeoutCount++; else state.wrongCount++;
         state.currentCombo = 0;
         playSound('wrong');
-        showFeedback(isTimeout ? 'TIME OUT (-1)' : '-1', 'text-rose-400');
+        showToast(isTimeout ? '⌛ Hết Giờ (-1)' : '✖ Sai (-1)', 'bg-rose-500/20 text-rose-300 border border-rose-500/40');
         card.classList.add('animate-wrong');
       }
 
       setTimeout(() => {
         card.classList.remove('animate-correct', 'animate-wrong');
         nextQuestion();
-      }, 350);
+      }, 400);
     }
 
-    function showFeedback(text, colorClass) {
-      const pop = document.getElementById('feedback-pop');
-      pop.textContent = text;
-      pop.className = `absolute inset-0 flex items-center justify-center font-black text-5xl sm:text-6xl ${colorClass} opacity-100 transition-opacity duration-300`;
-      setTimeout(() => { pop.classList.add('opacity-0'); }, 300);
+    function showToast(text, styleClass) {
+      const toast = document.getElementById('feedback-toast');
+      toast.textContent = text;
+      toast.className = `absolute top-3 right-4 px-4 py-1.5 rounded-full font-bold text-sm shadow-lg pointer-events-none transition-all duration-200 ${styleClass}`;
+      toast.classList.remove('hidden');
+      setTimeout(() => { toast.classList.add('hidden'); }, 400);
     }
 
-    // Xử lý sự kiện trả lời
     function submitFillAnswer() {
       const val = document.getElementById('input-fill-answer').value.trim();
       if (!val) return;
@@ -655,27 +620,20 @@
       handleAnswer(userChoice === state.currentQ.isTrue);
     }
 
-    // Lắng nghe phím Enter cho Mode 1
     document.getElementById('input-fill-answer').addEventListener('keyup', (e) => {
       if (e.key === 'Enter') submitFillAnswer();
     });
 
-    /* ==========================================================================
-       6. KẾT THÚC GAME & TÍNH TOÁN KỶ LỤC
-       ========================================================================== */
     function endGame() {
-      // Cập nhật Player Stats vĩnh viễn
       player.totalGames++;
       player.totalQuestions += CONFIG.QUESTIONS_PER_GAME;
       player.correctAnswers += state.correctCount;
       player.wrongAnswers += (state.wrongCount + state.timeoutCount);
       if (state.maxComboInRun > player.bestCombo) player.bestCombo = state.maxComboInRun;
 
-      // Thưởng Coin tương ứng với điểm số
       const gainedCoins = Math.max(0, state.score);
       player.coins += gainedCoins;
 
-      // Kiểm tra kỷ lục
       let isNewHigh = false;
       if (state.score > player.highScore) {
         player.highScore = state.score;
@@ -688,7 +646,6 @@
       checkAchievements();
       saveData();
 
-      // Cập nhật màn hình kết quả
       document.getElementById('res-score').textContent = state.score;
       document.getElementById('res-correct').textContent = state.correctCount;
       document.getElementById('res-wrong').textContent = state.wrongCount;
@@ -710,9 +667,6 @@
       showScreen('screen-result');
     }
 
-    /* ==========================================================================
-       7. TỦ ĐỒ (WARDROBE / REWARD SYSTEM)
-       ========================================================================== */
     const SHOP_ITEMS = [
       { id: 'theme-default', name: 'Giao diện Cyber Neon', price: 0, themeClass: '' },
       { id: 'theme-emerald', name: 'Giao diện Ngọc Lục Bảo', price: 50, themeClass: 'theme-emerald' },
@@ -763,9 +717,6 @@
       renderWardrobe();
     }
 
-    /* ==========================================================================
-       8. HUY HIỆU THÀNH TÍCH (ACHIEVEMENTS)
-       ========================================================================== */
     const ACHIEVEMENTS = [
       { id: 'first_run', title: 'First Step', desc: 'Hoàn tất lượt chơi đầu tiên', check: () => player.totalGames >= 1 },
       { id: 'combo_10', title: 'Speed Calculator', desc: 'Đạt chuỗi trả lời đúng 10 câu liên tiếp', check: () => player.bestCombo >= 10 },
@@ -803,9 +754,6 @@
       }).join('');
     }
 
-    /* ==========================================================================
-       9. QUẢN LÝ CHỨNG NHẬN & KHỞI TẠO UI
-       ========================================================================== */
     function openCertificateModal() {
       document.getElementById('modal-cert').classList.remove('hidden');
       document.getElementById('cert-user-name').value = player.playerName || "";
@@ -836,7 +784,6 @@
       document.getElementById('mode-high-tf').textContent = player.modeScores.trueFalse;
     }
 
-    // Khởi tạo ứng dụng
     (function initApp() {
       updateUIHeaderAndStats();
       if (player.equippedTheme) equipTheme(player.equippedTheme);
